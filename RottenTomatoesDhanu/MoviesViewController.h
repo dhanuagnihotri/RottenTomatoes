@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MoviesViewController.h
 //  RottenTomatoesDhanu
 //
 //  Created by Dhanu Agnihotri on 2/4/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MoviesViewController : UIViewController
 
 @end
-

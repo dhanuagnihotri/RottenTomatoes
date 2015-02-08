@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MoviesViewController.h"
+#import "DVDViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,49 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
+    //movies view controller
+    MoviesViewController *moviesVC = [[MoviesViewController alloc] init];
+    UINavigationController *ncMovie = [[UINavigationController alloc] initWithRootViewController:moviesVC];
+    ncMovie.navigationBar.barTintColor = [UIColor blackColor];
+    ncMovie.navigationBar.alpha = 0.1;
+    ncMovie.navigationBar.tintColor = [UIColor orangeColor];
+    ncMovie.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor]};
+    
+    //DVDs view controller
+    DVDViewController *dvdVC = [[DVDViewController alloc] init];
+    UINavigationController *ncDVD = [[UINavigationController alloc] initWithRootViewController:dvdVC];
+    ncDVD.navigationBar.barTintColor = [UIColor blackColor];
+    ncDVD.navigationBar.alpha = 0.1;
+    ncDVD.navigationBar.tintColor = [UIColor orangeColor];
+    ncDVD.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor]};
+    
+    NSArray *myViewControllers = [[NSArray alloc] initWithObjects:
+                                  ncMovie,
+                                  ncDVD, nil];
+    
+    //initialize the tab bar controller
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    //set the view controllers for the tab bar controller
+    tabBarController.viewControllers = myViewControllers;
+    tabBarController.tabBar.barTintColor = [UIColor blackColor];
+    tabBarController.tabBar.tintColor = [UIColor orangeColor];
+    
+    self.window.rootViewController = tabBarController;
+    
+    //can't set this until after its added to the tab bar
+    ncMovie.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"Movies"
+                                  image:[UIImage imageNamed:@"Movies"]
+                                    tag:1];
+    ncDVD.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"DVDs"
+                                  image:[UIImage imageNamed:@"DVDs"]
+                                    tag:2];
+    
     return YES;
 }
 
