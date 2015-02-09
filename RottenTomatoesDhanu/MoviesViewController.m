@@ -54,17 +54,17 @@
     [flowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.moviesCollectionView setCollectionViewLayout:flowLayout];
   
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
-    [self.moviesTableView insertSubview:self.refreshControl atIndex:0];
-    [self.moviesCollectionView insertSubview:self.refreshControl atIndex:0];
-
     self.moviesTableView.rowHeight = 100;
     // This will remove extra separators from tableview
     self.moviesTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.moviesCollectionView.hidden = YES;
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.moviesCollectionView insertSubview:self.refreshControl atIndex:0];
+    [self.moviesTableView insertSubview:self.refreshControl atIndex:0];
+
     NSUInteger selectedIndex = self.parentViewController.tabBarController.selectedIndex;
     switch (selectedIndex) {
         case 0:
