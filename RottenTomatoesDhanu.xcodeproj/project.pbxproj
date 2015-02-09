@@ -19,8 +19,6 @@
 		9568438B1A82F843007F001A /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956843891A82F843007F001A /* MoviesTableViewCell.xib */; };
 		956843D01A83D8FB007F001A /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 956843CE1A83D8FB007F001A /* MovieDetailViewController.m */; };
 		956843D11A83D8FB007F001A /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956843CF1A83D8FB007F001A /* MovieDetailViewController.xib */; };
-		956843D51A84481F007F001A /* DVDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 956843D31A84481F007F001A /* DVDViewController.m */; };
-		956843D61A84481F007F001A /* DVDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956843D41A84481F007F001A /* DVDViewController.xib */; };
 		956843DA1A870DCC007F001A /* MoviesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 956843D81A870DCC007F001A /* MoviesCollectionViewCell.m */; };
 		956843DB1A870DCC007F001A /* MoviesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956843D91A870DCC007F001A /* MoviesCollectionViewCell.xib */; };
 		DFC362085F50A53A049477D1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296403A1E4B0A34C292B7C88 /* libPods.a */; };
@@ -59,9 +57,6 @@
 		956843CD1A83D8FB007F001A /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		956843CE1A83D8FB007F001A /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		956843CF1A83D8FB007F001A /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
-		956843D21A84481F007F001A /* DVDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDViewController.h; sourceTree = "<group>"; };
-		956843D31A84481F007F001A /* DVDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVDViewController.m; sourceTree = "<group>"; };
-		956843D41A84481F007F001A /* DVDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DVDViewController.xib; sourceTree = "<group>"; };
 		956843D71A870DCC007F001A /* MoviesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoviesCollectionViewCell.h; path = RottenTomatoesDhanu/MoviesCollectionViewCell.h; sourceTree = "<group>"; };
 		956843D81A870DCC007F001A /* MoviesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoviesCollectionViewCell.m; path = RottenTomatoesDhanu/MoviesCollectionViewCell.m; sourceTree = "<group>"; };
 		956843D91A870DCC007F001A /* MoviesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoviesCollectionViewCell.xib; path = RottenTomatoesDhanu/MoviesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -171,9 +166,6 @@
 				956843801A82F399007F001A /* MoviesViewController.h */,
 				956843811A82F399007F001A /* MoviesViewController.m */,
 				956843821A82F399007F001A /* MoviesViewController.xib */,
-				956843D21A84481F007F001A /* DVDViewController.h */,
-				956843D31A84481F007F001A /* DVDViewController.m */,
-				956843D41A84481F007F001A /* DVDViewController.xib */,
 				956843CD1A83D8FB007F001A /* MovieDetailViewController.h */,
 				956843CE1A83D8FB007F001A /* MovieDetailViewController.m */,
 				956843CF1A83D8FB007F001A /* MovieDetailViewController.xib */,
@@ -283,7 +275,6 @@
 				956843691A82D042007F001A /* LaunchScreen.xib in Resources */,
 				956843661A82D042007F001A /* Images.xcassets in Resources */,
 				956843841A82F399007F001A /* MoviesViewController.xib in Resources */,
-				956843D61A84481F007F001A /* DVDViewController.xib in Resources */,
 				956843DB1A870DCC007F001A /* MoviesCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +332,6 @@
 				956843D01A83D8FB007F001A /* MovieDetailViewController.m in Sources */,
 				9568438A1A82F843007F001A /* MoviesTableViewCell.m in Sources */,
 				9568435B1A82D042007F001A /* main.m in Sources */,
-				956843D51A84481F007F001A /* DVDViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

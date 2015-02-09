@@ -21,15 +21,24 @@
     // Do any additional setup after loading the view from its nib.
     
     NSString *url = [self.movie valueForKeyPath:@"posters.original"];
+    [self.posterView setImageWithURL:[NSURL URLWithString:url]];
     url = [url stringByReplacingOccurrencesOfString:@"_tmb"
                                          withString:@"_ori"];
     
-    [self.posterView setImageWithURL:[NSURL URLWithString:url]];
-
+    __weak typeof(self) weakSelf = self;
+    [self.posterView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
+                          placeholderImage:nil
+                                   success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                       weakSelf.posterView.image=image;
+                                   }
+                                   failure:nil
+     ];
+    
     NSMutableString *titleString = [NSMutableString stringWithString:self.movie[@"title"]];
+    self.navigationItem.title = titleString;
+
     NSNumber *year = self.movie[@"year"];
     [titleString appendString:[NSString stringWithFormat:@" (%@)", year.stringValue]];
-    
     self.titleLabel.text = titleString;
     [self.titleLabel sizeToFit];
 
@@ -38,7 +47,6 @@
     [scoreString appendString:[NSString stringWithFormat:@"%@, Audience score:", score.stringValue]];
     score = [self.movie valueForKeyPath:@"ratings.audience_score"];
     [scoreString appendString:[NSString stringWithFormat:@"%@", score.stringValue]];
-    
     self.score.text = scoreString;
 
     self.mpaa_rating.text = self.movie[@"mpaa_rating"];

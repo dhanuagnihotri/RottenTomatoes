@@ -67,12 +67,7 @@
     // This will remove extra separators from tableview
     self.moviesTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.title = @"Movies";
-
-    [self onRefresh];
-    
     self.moviesCollectionView.hidden = YES;
-    
     
     NSUInteger selectedIndex = self.parentViewController.tabBarController.selectedIndex;
     switch (selectedIndex) {
@@ -86,6 +81,8 @@
         default:
             break;
     }
+    
+    [self onRefresh];
 
 }
 
@@ -120,6 +117,22 @@
     [cell.photoView setImageWithURL:[NSURL URLWithString:url]];
     [cell.photoView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
     [cell.photoView.layer setBorderWidth: 1.0];
+    
+//    cell.photoView.alpha = 0.5;
+//    [UIView animateWithDuration:1.0 animations:^{
+//        cell.photoView.alpha = 1.0;
+//    }];
+    
+    
+//    [cell.photoView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
+//                      placeholderImage:nil
+//                               success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+//                                   cell.photoView.image=image;
+//                               }
+//                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+//                                   NSLog(@"failed loading: %@", error);
+//                               }
+//     ];
 
     return cell;
 }
@@ -132,6 +145,7 @@
     vc.movie = self.filteredMovies[indexPath.row];
     
     vc.hidesBottomBarWhenPushed = YES;
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -191,13 +205,15 @@
 
 - (void)onRefresh {
    
-    NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=bngz4p8ef9hpew9ssk4c8f4w"];
+    NSURL *url = [NSURL URLWithString:self.query];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     
     [SVProgressHUD show];
     [ NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-        if(connectionError!=nil)
+        //For now just checking for basic networking errors
+        if(connectionError!=nil || connectionError.code ==  NSURLErrorNotConnectedToInternet || connectionError.code
+           == NSURLErrorNetworkConnectionLost)
         {
             [self showNetworkError];
         }
