@@ -23,8 +23,7 @@
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UIView *networkError;
-
-@property (nonatomic, strong) UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 - (IBAction)segmentControlValueChanged:(id)sender;
@@ -41,11 +40,8 @@
     self.moviesCollectionView.dataSource = self;
     self.moviesCollectionView.delegate = self;
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     self.searchBar.barStyle = UIBarStyleBlackTranslucent;
-    self.moviesTableView.tableHeaderView = self.searchBar;
-//    [self.moviesCollectionView addSubview:self.searchBar];
-//    [self.moviesCollectionView setContentOffset:CGPointMake(0, 40)];
+    
     self.searchBar.delegate = self;
     
     [self.moviesTableView registerNib:[UINib nibWithNibName:@"MoviesTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
@@ -57,7 +53,7 @@
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [flowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.moviesCollectionView setCollectionViewLayout:flowLayout];
-    
+  
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
     [self.moviesTableView insertSubview:self.refreshControl atIndex:0];
@@ -123,17 +119,6 @@
 //        cell.photoView.alpha = 1.0;
 //    }];
     
-    
-//    [cell.photoView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
-//                      placeholderImage:nil
-//                               success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-//                                   cell.photoView.image=image;
-//                               }
-//                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-//                                   NSLog(@"failed loading: %@", error);
-//                               }
-//     ];
-
     return cell;
 }
 
@@ -269,6 +254,7 @@
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:resultPredicate];
     }
     [self.moviesTableView reloadData];
+    [self.moviesCollectionView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) aSearchBar {

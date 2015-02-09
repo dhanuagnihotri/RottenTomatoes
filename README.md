@@ -13,7 +13,7 @@ Completed user stories:
 * [x] Required: User sees error message when there's a networking error.
 * [x] Required: User can pull to refresh the movie list.
 * [x] Optional: Add a tab bar for Box Office and DVD.
-* [x] Optional:
+* [x] Optional: Implement segmented control to switch between list view and grid view 
 * [x] Optional: Add a search bar.
 * [x] Optional:
 * [x] Optional: For the large poster, load the low-res image first, switch to high-res when complete 
@@ -21,6 +21,7 @@ Completed user stories:
 * [x] Optional: Customize the navigation bar.
 
 Notes:
+- My images are blurry in Collection view, not sure how to fix it 
 
 Walkthrough of all user stories:
 
@@ -30,5 +31,4 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 
-Implement segmented control to switch between list view and grid view (optional)
 All images fade in (optional)
