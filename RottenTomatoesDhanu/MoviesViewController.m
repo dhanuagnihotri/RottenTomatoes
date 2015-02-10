@@ -62,7 +62,6 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
-    [self.moviesCollectionView insertSubview:self.refreshControl atIndex:0];
     [self.moviesTableView insertSubview:self.refreshControl atIndex:0];
 
     NSUInteger selectedIndex = self.parentViewController.tabBarController.selectedIndex;
@@ -113,12 +112,7 @@
     [cell.photoView setImageWithURL:[NSURL URLWithString:url]];
     [cell.photoView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
     [cell.photoView.layer setBorderWidth: 1.0];
-    
-//    cell.photoView.alpha = 0.5;
-//    [UIView animateWithDuration:1.0 animations:^{
-//        cell.photoView.alpha = 1.0;
-//    }];
-    
+        
     return cell;
 }
 
@@ -277,12 +271,14 @@
 
     if(self.segmentControl.selectedSegmentIndex == 0)
     {
+        [self.moviesTableView insertSubview:self.refreshControl atIndex:0];
         self.moviesTableView.hidden = NO;
         self.moviesCollectionView.hidden = YES;
     }
     else
     {
         self.moviesTableView.hidden = YES;
+        [self.moviesCollectionView insertSubview:self.refreshControl atIndex:0];
         self.moviesCollectionView.hidden = NO;
     }
 }

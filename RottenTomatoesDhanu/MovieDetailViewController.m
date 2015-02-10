@@ -29,7 +29,12 @@
     [self.posterView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
                           placeholderImage:nil
                                    success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                       weakSelf.posterView.alpha = 0.0;
                                        weakSelf.posterView.image=image;
+                                       [UIView animateWithDuration:0.5
+                                                        animations:^{
+                                                            weakSelf.posterView.alpha = 1.0;
+                                                        }];
                                    }
                                    failure:nil
      ];
